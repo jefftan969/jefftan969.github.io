@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Distilling Neural Fields for Real-Time Articulated Shape Reconstruction</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                Distilling Neural Fields for Real-Time <br> Articulated Shape Reconstruction </br>
+                <small>Under review at CVPR 2023</small>
+            </h2>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-justify">
+Paper and more website content coming soon! Fornow, please see the embedded MP4 files below containing video results contained in the paper.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>Abstract</h3>
+                <p class="text-justify">
+Prior work for articulated 3D shape reconstruction often relies on pre-built deformable models (e.g. SMAL or SMPL) or slow per-scene optimization through differentiable rendering (e.g. dynamic NeRFs). Such methods fail to support arbitrary object categories, or are unsuitable for real-time applications. We present a method that builds articulated 3D models from videos in real time without per-scene optimization or expensive real-world annotations. While it is challenging to collect accurate and 3D training data for arbitrary deformable object categories in a scalable way, our key insight is to leverage off-the-shelf video-based dynamic NeRFs as 3D supervision to train a feed-forward temporal network, turning 3D pose and shape prediction into a supervised distillation task. Our temporal network uses articulated bones and blend skinning to represent arbitrary deformations, and is self-supervised on large-scale video datasets without requiring 3D shapes or poses as input. Through distillation, our network learns to 3D-reconstruct unseen articulated objects at interactive frame rates. On human and pet reconstruction datasets, our method shows higher-fidelity 3D reconstructions than prior real-time methods for animals, with the ability to render realistic images at novel viewpoints and poses.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>Video Results on Humans</h3>
+                <p class="text-justify">
+From left to right: (1) The input image, (2) Articulated shape and texture predictions, (3) Comparison to BANMo, and (4-6) Predicted geometry from three views
+                </p>
+                <video id="human_T_swing1" width="100%" autoplay loop muted>
+                  <source src="img/human_results/T_swing1.mp4" type="video/mp4" />
+                </video>
+                <video id="human_T_samba1" width="100%" autoplay loop muted>
+                  <source src="img/human_results/T_samba1.mp4" type="video/mp4" />
+                </video>
+                <video id="human_D_bouncing1" width="100%" autoplay loop muted>
+                  <source src="img/human_results/D_bouncing1.mp4" type="video/mp4" />
+                </video>
+                <video id="human_franzi" width="100%" autoplay loop muted>
+                  <source src="img/human_results/franzi.mp4" type="video/mp4" />
+                </video>
+                <video id="human_pablo" width="100%" autoplay loop muted>
+                  <source src="img/human_results/pablo.mp4" type="video/mp4" />
+                </video>
+                <video id="human_I_crane1" width="100%" autoplay loop muted>
+                  <source src="img/human_results/I_crane1.mp4" type="video/mp4" />
+                </video>
+                <video id="human_I_jumping1" width="100%" autoplay loop muted>
+                  <source src="img/human_results/I_jumping1.mp4" type="video/mp4" />
+                </video>
+                <video id="human_D_handstand1" width="100%" autoplay loop muted>
+                  <source src="img/human_results/D_handstand1.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+            
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>Video Results on Dogs</h3>
+                <p class="text-justify">
+From left to right: (1) The input image, (2) Articulated shape and texture predictions, (3) Comparison to BARC, and (4-6) Predicted geometry from three views
+                </p>
+                <video id="dog_dog-dualrig-fgbg000" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-dualrig-fgbg000.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_dog-pexel-e011" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-e011.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_dog-pexel-r007" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-r007.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_dog-pexel-t008" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-t008.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_dog-pexel-t009" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-t009.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_dog-pexel-w011" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-w011.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_dog-pexel-y010" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-y010.mp4" type="video/mp4" />
+                </video>
+                <video id="dog_shiba-haru-1012" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/shiba-haru-1012.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>Video Results on Cats</h3>
+                <p class="text-justify">
+From left to right: (1) The input image, (2) Articulated shape and texture predictions, and (3-5) Predicted geometry from three views
+                </p>
+                <video id="cat_catpika-dualrig-fgbg004" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/catpika-dualrig-fgbg004.mp4" type="video/mp4" />
+                </video>
+                <video id="cat_cat-pexel30024" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/cat-pexel30024.mp4" type="video/mp4" />
+                </video>
+                <video id="cat_cat_five004" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/cat-five004.mp4" type="video/mp4" />
+                </video>
+                <video id="cat_cat-pexel20016" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/cat-pexel20016.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+            
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>Acknowledgements</h3>
+                <p class="text-justify">
+                The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
