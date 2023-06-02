@@ -36,27 +36,27 @@
 
 
         <div class="row">
-            <div class="col-md-12 text-center">
-                <ul class="list-inline">
-                    <li>
-                        <a href="https://jefftan969.github.io/">Jeff Tan</a>
-                        </br>Carnegie Mellon
-                    </li>
-                    <li>
-                        <a href="https://gengshan-y.github.io/">Gengshan Yang</a>
-                        </br>Carnegie Mellon
-                    </li>
-                    <li>
-                        <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>
-                        </br>Carnegie Mellon
-                    </li>
-                </ul>
+            <div class="col-md-2 col-md-offset-3 text-center">
+                <a href="https://jefftan969.github.io/">Jeff Tan</a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="https://gengshan-y.github.io/">Gengshan Yang</a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>
             </div>
         </div>
 
         
         <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center">
+            <div class="col-md-12 text-center">
+                Carnegie Mellon University
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
                 <ul class="nav nav-pills nav-justified">
                     <li>
                         <a href="https://jefftan969.github.io/dasr/paper.pdf">
@@ -66,7 +66,7 @@
                     </li>
                     <li>
                         <a href="https://jefftan969.github.io/dasr/poster.pdf">
-                        <image src="img/dasr_poster_image.png" height="60px">
+                        <image src="img/dasr_poster_image.png" height="30px" style="margin-top:30px">
                         <h4><strong>Poster</strong></h4>
                         </a>
                     </li>
@@ -101,25 +101,25 @@ We present a method for reconstructing articulated 3D models from videos in real
             <div class="col-md-8 col-md-offset-2">
                 <h3>Video Results on Dogs</h3>
                 <p class="text-justify">
-From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articulated shape and texture predictions, and (4-6) Our predicted geometry from three views
+From left to right: (1) The input image, (2) Comparison to BANMo, (3) Comparison to BARC, (4) Our articulated shape and texture predictions, and (5-7) Our predicted geometry from three views
                 </p>
                 <video id="dog_dog-dualrig-fgbg000" width="100%" autoplay loop muted>
                   <source src="img/dog_results/dog-dualrig-fgbg000.mp4" type="video/mp4" />
                 </video>
+                <video id="dog_dog-pexel-w011" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-w011.mp4" type="video/mp4" />
+                </video>
                 <video id="dog_dog-pexel-e011" width="100%" autoplay loop muted>
                   <source src="img/dog_results/dog-pexel-e011.mp4" type="video/mp4" />
                 </video>
-                <video id="dog_dog-pexel-r007" width="100%" autoplay loop muted>
-                  <source src="img/dog_results/dog-pexel-r007.mp4" type="video/mp4" />
+                <video id="dog_dog-pexel-q011" width="100%" autoplay loop muted>
+                  <source src="img/dog_results/dog-pexel-q011.mp4" type="video/mp4" />
                 </video>
                 <video id="dog_dog-pexel-t008" width="100%" autoplay loop muted>
                   <source src="img/dog_results/dog-pexel-t008.mp4" type="video/mp4" />
                 </video>
                 <video id="dog_dog-pexel-t009" width="100%" autoplay loop muted>
                   <source src="img/dog_results/dog-pexel-t009.mp4" type="video/mp4" />
-                </video>
-                <video id="dog_dog-pexel-w011" width="100%" autoplay loop muted>
-                  <source src="img/dog_results/dog-pexel-w011.mp4" type="video/mp4" />
                 </video>
                 <video id="dog_dog-pexel-y010" width="100%" autoplay loop muted>
                   <source src="img/dog_results/dog-pexel-y010.mp4" type="video/mp4" />
@@ -140,14 +140,17 @@ From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articu
                 <video id="cat_catpika-dualrig-fgbg004" width="100%" autoplay loop muted>
                   <source src="img/cat_results/catpika-dualrig-fgbg004.mp4" type="video/mp4" />
                 </video>
-                <video id="cat_cat-pexel30024" width="100%" autoplay loop muted>
-                  <source src="img/cat_results/cat-pexel30024.mp4" type="video/mp4" />
-                </video>
-                <video id="cat_cat_five004" width="100%" autoplay loop muted>
-                  <source src="img/cat_results/cat-five004.mp4" type="video/mp4" />
+                <video id="cat_cat-coco004" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/cat-coco004.mp4" type="video/mp4" />
                 </video>
                 <video id="cat_cat-pexel20016" width="100%" autoplay loop muted>
                   <source src="img/cat_results/cat-pexel20016.mp4" type="video/mp4" />
+                </video>
+                <video id="cat_cat-pexel30024" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/cat-pexel30024.mp4" type="video/mp4" />
+                </video>
+                <video id="cat_pikachiu170035" width="100%" autoplay loop muted>
+                  <source src="img/cat_results/pikachiu170035.mp4" type="video/mp4" />
                 </video>
             </div>
         </div>
@@ -159,49 +162,24 @@ From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articu
                 <p class="text-justify">
 From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articulated shape and texture predictions, and (4-6) Our predicted geometry from three views
                 </p>
-                <video id="human_D_bouncing1" width="100%" autoplay loop muted>
-                  <source src="img/human_results/D_bouncing1.mp4" type="video/mp4" />
-                </video>
-                <video id="human_D_handstand1" width="100%" autoplay loop muted>
-                  <source src="img/human_results/D_handstand1.mp4" type="video/mp4" />
-                </video>
-                <video id="human_T_samba1" width="100%" autoplay loop muted>
-                  <source src="img/human_results/T_samba1.mp4" type="video/mp4" />
-                </video>
-                <!--
-                <video id="human_T_swing1" width="100%" autoplay loop muted>
-                  <source src="img/human_results/T_swing1.mp4" type="video/mp4" />
-                </video>
                 <video id="human_T_samba1" width="100%" autoplay loop muted>
                   <source src="img/human_results/T_samba1.mp4" type="video/mp4" />
                 </video>
                 <video id="human_D_bouncing1" width="100%" autoplay loop muted>
                   <source src="img/human_results/D_bouncing1.mp4" type="video/mp4" />
                 </video>
-                <video id="human_franzi" width="100%" autoplay loop muted>
-                  <source src="img/human_results/franzi.mp4" type="video/mp4" />
-                </video>
-                <video id="human_pablo" width="100%" autoplay loop muted>
-                  <source src="img/human_results/pablo.mp4" type="video/mp4" />
-                </video>
-                <video id="human_I_crane1" width="100%" autoplay loop muted>
-                  <source src="img/human_results/I_crane1.mp4" type="video/mp4" />
-                </video>
-                <video id="human_I_jumping1" width="100%" autoplay loop muted>
-                  <source src="img/human_results/I_jumping1.mp4" type="video/mp4" />
-                </video>
                 <video id="human_D_handstand1" width="100%" autoplay loop muted>
                   <source src="img/human_results/D_handstand1.mp4" type="video/mp4" />
                 </video>
-                -->
             </div>
         </div>
             
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h3>Acknowledgements</h3>
+                <h3>Acknowledgments</h3>
                 <p class="text-justify">
+                <a href="https://gengshan-y.github.io/">Gengshan Yang</a> is supported by the Qualcomm Innovation Fellowship. Thanks to <a href="https://andrewsonga.github.io/">Chonghyuk Song</a> for providing data; <a href="https://www.linkedin.com/in/chittesh-thavamani">Chittesh Thavamani</a> for help with appearance prediction; and <a href="https://dunbar12138.github.io/">Kangle Deng</a>, <a href="https://linzhiqiu.github.io/">Zhiqiu Lin</a>, and <a href="https://ericaweng.github.io/">Erica Weng</a> for reviews.
                 The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
                 </p>
             </div>
