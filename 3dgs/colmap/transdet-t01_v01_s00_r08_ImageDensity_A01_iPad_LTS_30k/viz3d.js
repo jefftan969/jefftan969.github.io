@@ -143,7 +143,7 @@ function init() {
     // perspectiveCamera.position.y = 100;
     perspectiveCamera.position.z = -20;
     perspectiveCamera.lookAt(0, 1, 0);
-
+    perspectiveCamera.rotateZ(Math.PI);
 
     // Load point cloud
     var ply_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t01_v01_s00_r08_ImageDensity_A01_iPad_LTS/sparse/points3D.ply';
