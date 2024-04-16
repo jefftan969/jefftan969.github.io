@@ -53,12 +53,12 @@ AFRAME.registerComponent("gaussian_splatting", {
 		const positionsArray = new Float32Array(6 * 3);
 		const positions = new THREE.BufferAttribute(positionsArray, 3);
 		baseGeometry.setAttribute('position', positions);
-		positions.setXYZ(2, -3.0, 3.0, 0.0);
-		positions.setXYZ(1, 3.0, 3.0, 0.0);
-		positions.setXYZ(0, -3.0, -3.0, 0.0);
-		positions.setXYZ(5, -3.0, -3.0, 0.0);
-		positions.setXYZ(4, 3.0, 3.0, 0.0);
-		positions.setXYZ(3, 3.0, -3.0, 0.0);
+		positions.setXYZ(2, -2.0, 2.0, 0.0);
+		positions.setXYZ(1, 2.0, 2.0, 0.0);
+		positions.setXYZ(0, -2.0, -2.0, 0.0);
+		positions.setXYZ(5, -2.0, -2.0, 0.0);
+		positions.setXYZ(4, 2.0, 2.0, 0.0);
+		positions.setXYZ(3, 2.0, -2.0, 0.0);
 		positions.needsUpdate = true;
 
 		const geometry = new THREE.InstancedBufferGeometry().copy(baseGeometry);
@@ -171,8 +171,8 @@ AFRAME.registerComponent("gaussian_splatting", {
 
 				void main () {
 					float A = -dot(vPosition, vPosition);
-					if (A < -6.0) discard;
-					float B = exp(A / 2.0) * vColor.a / 2.50662827463;
+					if (A < -3.0) discard;
+					float B = exp(A / 2.0) * vColor.a;
 					gl_FragColor = vec4(vColor.rgb, B);
 				}
 			`,
