@@ -172,7 +172,7 @@ AFRAME.registerComponent("gaussian_splatting", {
 				void main () {
 					float A = -dot(vPosition, vPosition);
 					if (A < -4.0) discard;
-					float B = exp(A / 2.0) * vColor.a;
+					float B = exp(A / 2.0) * vColor.a / Math.sqrt(2.0 * Math.PI);
 					gl_FragColor = vec4(vColor.rgb, B);
 				}
 			`,
