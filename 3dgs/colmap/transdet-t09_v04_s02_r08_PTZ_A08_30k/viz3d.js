@@ -141,12 +141,12 @@ function init() {
     // perspective camera
     // perspectiveCamera.position.x = 0;
     // perspectiveCamera.position.y = 100;
-    perspectiveCamera.position.z = 20;
-    // perspectiveCamera.lookAt(0, -1, 0);
+    perspectiveCamera.position.z = -20;
+    perspectiveCamera.lookAt(0, 1, 0);
 
 
     // Load point cloud
-    var ply_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t01_v01_s00_r08_ImageDensity_A01_iPad_LTS/sparse/points3D.ply';
+    var ply_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t09_v04_s02_r08_PTZ_A08_30k/sparse/points3D.ply';
     const plyLoader = new PLYLoader(manager);
 
     plyLoader.load( ply_fileName, function ( geometry ) {
@@ -164,7 +164,7 @@ function init() {
     } );
 
     // Load COLMAP data
-    const colmap_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t01_v01_s00_r08_ImageDensity_A01_iPad_LTS/sparse/images.txt';
+    const colmap_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t09_v04_s02_r08_PTZ_A08_30k/sparse/images.txt';
 
     const fileLoader = new THREE.FileLoader(manager);
     fileLoader.load( colmap_fileName, function ( fileContent ) {
