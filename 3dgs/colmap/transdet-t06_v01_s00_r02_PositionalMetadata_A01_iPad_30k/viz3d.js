@@ -146,7 +146,7 @@ function init() {
 
 
     // Load point cloud
-    var ply_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t06_v01_s00_r02_PositionalMetadata_A01_iPad_30k/sparse/points3D.ply';
+    var ply_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t06_v01_s00_r02_PositionalMetadata_A01_iPad/sparse/points3D.ply';
     const plyLoader = new PLYLoader(manager);
 
     plyLoader.load( ply_fileName, function ( geometry ) {
@@ -164,7 +164,7 @@ function init() {
     } );
 
     // Load COLMAP data
-    const colmap_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t06_v01_s00_r02_PositionalMetadata_A01_iPad_30k/sparse/images.txt';
+    const colmap_fileName = 'https://huggingface.co/jefftan969/3dgs-splats/resolve/master/transdet-t06_v01_s00_r02_PositionalMetadata_A01_iPad/sparse/images.txt';
 
     const fileLoader = new THREE.FileLoader(manager);
     fileLoader.load( colmap_fileName, function ( fileContent ) {
