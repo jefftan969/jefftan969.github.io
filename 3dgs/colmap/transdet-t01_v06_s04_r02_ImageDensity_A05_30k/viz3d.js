@@ -142,7 +142,7 @@ function init() {
     // perspectiveCamera.position.x = 0;
     // perspectiveCamera.position.y = 100;
     perspectiveCamera.position.z = -20;
-    perspectiveCamera.lookAt(0, 1, 0);
+    perspectiveCamera.up.set(0, -1, 0); perspectiveCamera.lookAt(0, 1, 0);
 
 
     // Load point cloud
