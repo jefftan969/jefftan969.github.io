@@ -53,12 +53,12 @@ AFRAME.registerComponent("gaussian_splatting", {
 		const positionsArray = new Float32Array(6 * 3);
 		const positions = new THREE.BufferAttribute(positionsArray, 3);
 		baseGeometry.setAttribute('position', positions);
-		positions.setXYZ(2, -3.0, 3.0, 0.0);
-		positions.setXYZ(1, 3.0, 3.0, 0.0);
-		positions.setXYZ(0, -3.0, -3.0, 0.0);
-		positions.setXYZ(5, -3.0, -3.0, 0.0);
-		positions.setXYZ(4, 3.0, 3.0, 0.0);
-		positions.setXYZ(3, 3.0, -3.0, 0.0);
+		positions.setXYZ(2, -2.0, 2.0, 0.0);
+		positions.setXYZ(1, 2.0, 2.0, 0.0);
+		positions.setXYZ(0, -2.0, -2.0, 0.0);
+		positions.setXYZ(5, -2.0, -2.0, 0.0);
+		positions.setXYZ(4, 2.0, 2.0, 0.0);
+		positions.setXYZ(3, 2.0, -2.0, 0.0);
 		positions.needsUpdate = true;
 
 		const geometry = new THREE.InstancedBufferGeometry().copy(baseGeometry);
@@ -108,7 +108,7 @@ AFRAME.registerComponent("gaussian_splatting", {
 					vec4 pos2d = gsProjectionMatrix * camspace;
 
 					float bounds = 1.2 * pos2d.w;
-					if (pos2d.z < -bounds || pos2d.x < -bounds || pos2d.x > bounds
+					if (pos2d.z < -pos2d.w || pos2d.x < -bounds || pos2d.x > bounds
 						|| pos2d.y < -bounds || pos2d.y > bounds) {
 						gl_Position = vec4(0.0, 0.0, 2.0, 1.0);
 						return;
@@ -143,9 +143,7 @@ AFRAME.registerComponent("gaussian_splatting", {
 					float mid = 0.5 * (diagonal1 + diagonal2);
 					float radius = length(vec2((diagonal1 - diagonal2) / 2.0, offDiagonal));
 					float lambda1 = mid + radius;
-					float lambda2 = mid - radius;
-
-                                        if (lambda2 < 0.0) return;
+					float lambda2 = max(mid - radius, 0.1);
 					vec2 diagonalVector = normalize(vec2(offDiagonal, lambda1 - diagonal1));
 					vec2 v1 = min(sqrt(2.0 * lambda1), 1024.0) * diagonalVector;
 					vec2 v2 = min(sqrt(2.0 * lambda2), 1024.0) * vec2(diagonalVector.y, -diagonalVector.x);
@@ -171,8 +169,8 @@ AFRAME.registerComponent("gaussian_splatting", {
 
 				void main () {
 					float A = -dot(vPosition, vPosition);
-					if (A < -6.0) discard;
-					float B = exp(A / 2.0) * vColor.a;
+					if (A < -4.0) discard;
+					float B = exp(A) * vColor.a;
 					gl_FragColor = vec4(vColor.rgb, B);
 				}
 			`,
