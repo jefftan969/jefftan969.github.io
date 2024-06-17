@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>DressRecon: Freeform 4D Human Reconstruction from Monocular Video</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                DressRecon: Freeform 4D Human Reconstruction from Monocular Video </br>
+                <small>Jeff Tan, Gengshan Yang, Donglai Xiang, Shubham Tulsiani, Deva Ramanan</br></small>
+                <small>Carnegie Mellon University</small>
+            </h2>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Abstract</h3>
+                <p class="text-justify">
+                We present a method to reconstruct freeform objects, such as humans in loose clothing, from monocular videos in the wild. High-quality reconstructions in this setting typically require calibrated multi-view captures or personalized template scans, which are costly to collect at scale. We propose a monocular method that optimizes a consistent neural implicit body model that deforms over time, guided by image-based priors such as body pose and normals. Casually-captured videos are often hard to reconstruct as they have both large clothing deformation and large limb motion: to support this, we propose a video-specific articulated "bag-of-bones" deformation model that represents body and clothing deformation as two separate layers. This allows careful use of priors to affect one deformation type apart from the other: we encourage limb motion to follow a human body pose estimator and encourage both deformation types to be evenly distributed over the body. Crucial to reconstructing the high-fidelity geometry and deformations of clothing, we take advantage of off-the-shelf normal estimators and show how to supervise surface details when a deformation field is present. On datasets with highly dynamic clothing, DressRecon yields higher-fidelity 3D reconstructions than prior art.
+                </p>
+            </div>
+        </div>
+ 
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Video Comparisons</h3>
+                <p class="text-justify">
+                We compare with several baselines on DNA-Rendering sequences with challenging clothing deformation. From left to right, we show (1) the input video or GT novel view, and 3D reconstructions from (2) DressRecon, (3) Vid2Avatar, (4) BANMo, and (5) RAC. From top to bottom, we show the (1) input-view geometry, as well as novel-view geometry at (2) 45-degree and (3) -45-degree offsets. DressRecon is able to capture challenging deformable structures with higher fidelity than prior art.
+                </p>
+                <video id="baseline_comp_0123_02" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0123_02.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0113_06" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0113_06.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0047_12" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0047_12.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0133_07" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0133_07.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0239_01" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0239_01.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0166_04" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0166_04.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0188_02" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0188_02.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0121_02" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0121_02.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0206_04" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0206_04.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0008_01" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0008_01.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0102_02" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0102_02.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0152_01" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0152_01.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0047_01" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0047_01.mp4" type="video/mp4" />
+                </video>
+                <video id="baseline_comp_0128_04" width="100%" autoplay loop muted>
+                  <source src="img/baseline_comp/0128_04.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
+            
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Hierarchical Gaussian Motion Fields</h3>
+                <p class="text-justify">
+                We visualize the optimized hierarchical Gaussian motion fields at the input view, on DNA-Rendering sequences with challenging clothing deformation. From left to right, we show (1) the final deformed shape with both clothing and body deformation (deform-*), (2) only clothing deformation with no body deformation (cloth-*), (3) only body deformation with no clothing deformation (body-*), and (4) the canonical shape with no deformation (canon-*). From top to bottom, we show (1) the output geometry, (2) Gaussian bones overlaid on top of the geometry, and (3) Gaussian bones, where body Gaussians are blue and clothing Gaussians are yellow. Body and clothing Gaussians are evenly distributed over the space, and are responsible for separately articulating the body and clothing.
+                </p>
+                <p class="text-justify">
+                Note: As the cameras in DNA-Rendering are stationary, we need to jump between dataset cameras to generate a monocular turntable video of the target, following the procedure in Sec. 4.1 of the paper.
+                </p>
+                <video id="bone_vis_0123_02" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0123_02.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0113_06" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0113_06.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0047_12" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0047_12.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0133_07" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0133_07.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0239_01" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0239_01.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0166_04" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0166_04.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0188_02" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0188_02.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0121_02" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0121_02.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0206_04" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0206_04.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0008_01" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0008_01.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0102_02" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0102_02.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0152_01" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0152_01.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0047_01" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0047_01.mp4" type="video/mp4" />
+                </video>
+                <video id="bone_vis_0128_04" width="100%" autoplay loop muted>
+                  <source src="img/bone_vis/0128_04.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+          
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Acknowledgments</h3>
+                <p class="text-justify">
+                The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
