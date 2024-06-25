@@ -1,40 +1,43 @@
 
 $(document).ready(function() {
-    var editor = CodeMirror.fromTextArea(document.getElementById("bibtex"), {
-        lineNumbers: false,
-        lineWrapping: true,
-        readOnly:true
-    });
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
-    
+    const sequences = [
+        "0008_01", "0047_01", "0047_12", "0102_02", "0113_06", "0121_02", "0123_02",
+        "0128_04", "0133_07", "0152_01", "0166_04", "0188_02", "0206_04", "0239_01",
+    ];
 
-// var frameNumber = 0, // start video at frame 0
-//     // lower numbers = faster playback
-//     playbackConst = 500, 
-//     // get page height from video duration
-//     setHeight = document.getElementById("main"), 
-//     // select video element         
-//     vid = document.getElementById('v0'); 
-//     // var vid = $('#v0')[0]; // jquery option
+    // ===== Baseline Comparison
+    function get_onclick_baseline_comp(seq) {
+        return function(e) {
+            document.getElementById("baseline_comp_video").src = "./img/baseline_comp/" + seq + ".mp4";
+            for (var i = 0; i < sequences.length; i++) {
+                other_seq = sequences[i];
+                document.getElementById("baseline_comp_" + other_seq).className = "";
+            }
+            document.getElementById("baseline_comp_" + seq).className = "selected-scene";
+        };
+    }
 
-    
-    
+    for (var i = 0; i < sequences.length; i++) {
+        seq = sequences[i];
+        document.getElementById("baseline_comp_" + seq).addEventListener("click", get_onclick_baseline_comp(seq));
+    }
+    get_onclick_baseline_comp("0123_02")("");
 
-// // Use requestAnimationFrame for smooth playback
-// function scrollPlay(){  
-//   var frameNumber  = window.pageYOffset/playbackConst;
-//   vid.currentTime  = frameNumber;
-//   window.requestAnimationFrame(scrollPlay);
-// console.log('scroll');
-// }
-    
-// // dynamically set the page height according to video length
-// vid.addEventListener('loadedmetadata', function() {
-//   setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
-// });
-    
-    
-//     window.requestAnimationFrame(scrollPlay);
+    // ===== Gaussian Visualization
+    function get_onclick_deform_vis(seq) {
+        return function(e) {
+            document.getElementById("deform_vis_video").src = "./img/deform_vis/" + seq + ".mp4";
+            for (var i = 0; i < sequences.length; i++) {
+                other_seq = sequences[i];
+                document.getElementById("deform_vis_" + other_seq).className = "";
+            }
+            document.getElementById("deform_vis_" + seq).className = "selected-scene";
+        };
+    }
+
+    for (var i = 0; i < sequences.length; i++) {
+        seq = sequences[i];
+        document.getElementById("deform_vis_" + seq).addEventListener("click", get_onclick_deform_vis(seq));
+    }
+    get_onclick_deform_vis("0008_01")("");
 });

@@ -146,14 +146,19 @@ span.highlight {
 }
 
 .list-inline {
-	list-style: none;
-	margin-left: -0.5em;
-	margin-right: -0.5em;
-	padding-left: 0;
+    list-style: none;
+    margin-left: -0.5em;
+    margin-right: -0.5em;
+    padding-left: 0;
 }
 
 .list-inline > li {
-	display: inline-block;
-	margin-left: 0.5em;
-	margin-right: 0.5em;
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.selected-scene  {
+    background-color: #333;
+    color: #EFEFEF;
 }
