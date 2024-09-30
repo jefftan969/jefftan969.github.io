@@ -29,11 +29,53 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                DressRecon: Freeform 4D Human Reconstruction from Monocular Video </br>
-                <small>Jeff Tan, Donglai Xiang, Shubham Tulsiani, Deva Ramanan, Gengshan Yang</br></small>
-                <small>Carnegie Mellon University</br></small>
+                DressRecon: Freeform 4D Human Reconstruction from Monocular Video
             </h2>
+            <center>
+                <a href="https://jefftan969.github.io/">Jeff Tan</a>,
+                <a href="https://xiangdonglai.github.io/">Donglai Xiang</a>,
+                <a href="https://shubhtuls.github.io/">Shubham Tulsiani</a>,
+                <a href="https://cs.cmu.edu/~deva/">Deva Ramanan</a>,
+                <a href="https://gengshan-y.github.io/">Gengshan Yang</a>
+                <br>
+                Carnegie Mellon University
+            </center>
         </div>
+
+  
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://jefftan969.github.io/dressrecon/paper.pdf">
+                        <image src="img/dressrecon_paper_image.png" height="60px">
+                        <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <!--
+                    <li>
+                        <a href="https://jefftan969.github.io/dressrecon/poster.pdf">
+                        <image src="img/dressrecon_poster_image.png" height="30px" style="margin-top:30px">
+                        <h4><strong>Poster</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=taUtXtW8b3Q">
+                        <image src="img/youtube_icon.png" height="60px">
+                        <h4><strong>Video</strong></h4>
+                        </a>
+                    </li>
+                    -->
+                    <li>
+                        <a href="https://github.com/jefftan969/dressrecon">
+                        <image src="img/github_icon.png" height="60px">
+                        <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-md-12">
@@ -45,18 +87,14 @@
 
                 <h3>Abstract</h3>
                 <p class="text-justify">
-                Given a single input video of a human, DressRecon reconstructs a time-consistent 4D body model, including shape, appearance, time-varying body articulations, as well as extremely loose clothing deformation or accessory objects. We propose a hierarchical bag-of-bones deformation model that allows body and clothing motion to be separated. We leverage image-based priors such as human body pose, surface normals, and optical flow to make optimization more tractable. The resulting neural fields can be extracted into time-consistent meshes, or further optimized as explicit 3D Gaussians for high-fidelity interactive rendering.
+                We present a method to reconstruct time-consistent human body models from monocular videos, focusing on extremely loose clothing or handheld object interactions. Prior work in human reconstruction is either limited to tight clothing with no object interactions, or requires calibrated multi-view captures or personalized template scans which are costly to collect at scale. Our key insight for high-quality yet flexible reconstruction is the careful combination of generic human priors about articulated body shape (learned from large-scale training data) with video-specific articulated ``bag-of-bones" deformation (fit to a single video via test-time optimization). We accomplish this by learning a neural implicit model that disentangles body versus clothing deformations as separate motion model layers. To capture subtle geometry of clothing, we leverage image-based priors such as human body pose, surface normals, and optical flow during optimization. The resulting neural fields can be extracted into time-consistent meshes, or further optimized as explicit 3D Gaussians for high-fidelity interactive rendering. On datasets with highly challenging clothing deformations and object interactions, DressRecon yields higher-fidelity 3D reconstructions than prior art.
                 </p>
 
                 <h3>Method</h3>
-
-                <h4>Canonical Shape</h4>
-                <p class="text-justify">
-                We represent the body shape as a neural signed distance field in the canonical space. During volume rendering, rays at time t are traced back to the canonical shape via a deformation field.
-                </p>
+                The body shape is a neural signed distance field in the canonical space. During volume rendering, rays at time t are traced back to the canonical space via a deformation field.
 
                 <h4>Hierarchical Deformation</h4>
-                Hierarchical motion fields, represented by body and clothing Gaussians, are used to warp between the canonical shape and time t. The motion fields are flexible enough to capture fine-grained clothing deformations as well as limb motions, while effectively utilizing domain-specific priors such as 3D human body pose.
+                Hierarchical motion fields, represented by body and clothing Gaussians, warp between the canonical shape and time t. The motion fields capture limb motions as well as fine-grained clothing deformations. Below, the woman's arms stop moving when body deformation is removed (middle).
                 <br>
                 <center>
                     <video id="hierarchical_deformation" width="100%" autoplay loop muted>
@@ -65,43 +103,71 @@
                 </center>
 
                 <h4>Image-Based Priors</h4>
-                To capture subtle geometry of clothing and make the optimization tractable, we use foundational image-based priors as supervision, including surface normals, optical flow, universal features, segmentation masks, and 3D human body pose. Below, we show an example set of input priors to our method.
+                To capture subtle geometry and make optimization tractable, we use foundational image-based priors as supervision, including surface normals, optical flow, universal features, segmentation masks, and 3D human body pose. Each observation below contributes an additional loss term.
                 <br>
                 <center>
-                    <video id="image_based_priors" width="60%" autoplay loop muted>
+                    <video id="image_based_priors" width="100%" autoplay loop muted>
                         <source src="./img/image_based_priors.mp4" type="video/mp4" />
                     </video>
                 </center>
 
                 <h4>Refinement with 3D Gaussians</h4>
-                The resulting neural fields can be extracted into time-consistent meshes, or further optimized as explicit 3D Gaussians to improve the rendering quality and enable interactive visualization. In the example below, 3D Gaussian refinement improves the texture quality on this man's clothing.
+                The resulting neural fields can be extracted into time-consistent meshes, or further optimized as explicit 3D Gaussians to improve the rendering quality and enable interactive visualization. Below, refinement from an implicit SDF to 3D Gaussians improves texture quality.
                 <br>
                 <center>
-                    <video id="gaussian_refinement" width="60%" autoplay loop muted>
+                    <video id="gaussian_refinement" width="100%" autoplay loop muted>
                         <source src="./img/gaussian_refinement.mp4" type="video/mp4" >
                     </video>
                 </center>
 
                 <h3>Results</h3>
-                DressRecon is able to reconstruct plausible shapes and motions even in challenging scenarios. Below, we show the reconstructed shape, rendered 3D point tracks, 3D Gaussians after refinement, and input-view RGB renderings on DNA-Rendering sequences.
+                DressRecon reconstructs high-fidelity shapes and motions even in challenging scenarios. Below, we show the reconstructed shape, rendered 3D point tracks, 3D Gaussian locations after refinement, input-view RGB renderings, and input monocular videos on DNA-Rendering sequences.
                 <br>
-                <button id="results_shape">Shape</button>
-                <button id="results_tracks">3D Point Tracks</button>
-                <button id="results_gaussians">3D Gaussians</button>
-                <button id="results_rgb">Rendered RGB</button>
-                <button id="results_ref_rgb">Input Monocular Videos</button>
+
+                <button id="results_1_shape">Shape</button>
+                <button id="results_1_tracks">3D Tracks</button>
+                <button id="results_1_gaussians">3D Gaussians</button>
+                <button id="results_1_rgb">Rendered RGB</button>
+                <button id="results_1_ref_rgb">Input Monocular Video</button>
+                <br>
+                <button id="results_1_group0">⠀1⠀</button>
+                <button id="results_1_group1">⠀2⠀</button>
+                <button id="results_1_group2">⠀3⠀</button>
+                <button id="results_1_group3">⠀4⠀</button>
+                <button id="results_1_group4">⠀5⠀</button>
                 <center>
-                    <video id="results" width="100%" autoplay loop muted>
+                    <video id="results_1" width="100%" autoplay loop muted>
+                        <source src="" type="video/mp4" >
+                    </video>
+                </center>
+
+                <button id="results_2_shape">Shape</button>
+                <button id="results_2_tracks">3D Tracks</button>
+                <button id="results_2_gaussians">3D Gaussians</button>
+                <button id="results_2_rgb">Rendered RGB</button>
+                <button id="results_2_ref_rgb">Input Monocular Video</button>
+                <br>
+                <button id="results_2_group0">⠀1⠀</button>
+                <button id="results_2_group1">⠀2⠀</button>
+                <button id="results_2_group2">⠀3⠀</button>
+                <button id="results_2_group3">⠀4⠀</button>
+                <button id="results_2_group4">⠀5⠀</button>
+                <center>
+                    <video id="results_2" width="100%" autoplay loop muted>
                         <source src="" type="video/mp4" >
                     </video>
                 </center>
 
                 <h3>Extreme View Synthesis</h3>
-                The reconstructed avatars can be rendered from any view. Given the monocular video on the left as input, we show four novel-view renderings for each sequence. The ground-truth videos on the bottom are for reference only - they are not produced by our method, and are not visible to our method as input.
+                The reconstructed avatars can be rendered from any view. Given the input monocular video on the left, we show four novel-view renderings at extreme views.
                 <br>
-                <button id="extreme_view_synthesis_0102_02">0102_02</button>
+                <button id="extreme_view_synthesis_0008_01">0008_01</button>
+                <button id="extreme_view_synthesis_0047_12">0047_12</button>
+                <button id="extreme_view_synthesis_0113_06">0113_06</button>
                 <button id="extreme_view_synthesis_0121_02">0121_02</button>
+                <button id="extreme_view_synthesis_0123_02">0123_02</button>
                 <button id="extreme_view_synthesis_0128_04">0128_04</button>
+                <button id="extreme_view_synthesis_0152_01">0152_01</button>
                 <button id="extreme_view_synthesis_0188_02">0188_02</button>
                 <center>
                     <video id="extreme_view_synthesis" width="100%" autoplay loop muted>
@@ -110,18 +176,18 @@
                 </center>
 
                 <h3>Motion Decomposition</h3>
-                The body and clothing deformation layers are evenly distributed in space, and can be effectively separated. Below, we show the result of removing each motion type from the reconstructed avatar. Clothing Gaussians are shown in shades of yellow, and body Gaussians are shown in shades of blue.
+                The body and clothing deformation layers are evenly distributed in space, and are often responsible for separate types of motion. Below, we remove each motion type from the reconstructed avatar. Clothing Gaussians are yellow and body Gaussians are blue.
                 <br>
                 <button id="motion_decomposition_0008_01">0008_01</button>
+                <button id="motion_decomposition_0047_01">0047_01</button>
+                <button id="motion_decomposition_0047_12">0047_12</button>
                 <button id="motion_decomposition_0102_02">0102_02</button>
                 <button id="motion_decomposition_0113_06">0113_06</button>
                 <button id="motion_decomposition_0121_02">0121_02</button>
                 <button id="motion_decomposition_0123_02">0123_02</button>
                 <button id="motion_decomposition_0128_04">0128_04</button>
                 <button id="motion_decomposition_0152_01">0152_01</button>
-                <button id="motion_decomposition_0166_04">0166_04</button>
                 <button id="motion_decomposition_0188_02">0188_02</button>
-                <button id="motion_decomposition_0239_01">0239_01</button>
                 <center>
                     <video id="motion_decomposition" width="100%" autoplay loop muted>
                         <source src="" type="video/mp4" >
@@ -129,20 +195,20 @@
                 </center>
 
                 <h3>Baseline Comparisons</h3>
-                We compare DressRecon's reconstructed shapes with several baselines, on DNA-Rendering sequences that contain challenging clothing deformation and handheld objects. DressRecon is able to reconstruct challenging deformable structures with higher fidelity than prior art.
+                We compare DressRecon's shape with several baselines, on DNA-Rendering sequences that contain challenging clothing deformation and handheld objects. DressRecon is able to reconstruct challenging deformable structures with higher fidelity than prior art.
                 <br>
                 <button id="baseline_comparison_0008_01">0008_01</button>
+                <button id="baseline_comparison_0047_01">0047_01</button>
+                <button id="baseline_comparison_0047_12">0047_12</button>
                 <button id="baseline_comparison_0102_02">0102_02</button>
                 <button id="baseline_comparison_0113_06">0113_06</button>
                 <button id="baseline_comparison_0121_02">0121_02</button>
                 <button id="baseline_comparison_0123_02">0123_02</button>
                 <button id="baseline_comparison_0128_04">0128_04</button>
                 <button id="baseline_comparison_0152_01">0152_01</button>
-                <button id="baseline_comparison_0166_04">0166_04</button>
                 <button id="baseline_comparison_0188_02">0188_02</button>
-                <button id="baseline_comparison_0239_01">0239_01</button>
                 <center>
-                    <video id="baseline_comparison" width="50%" autoplay loop muted>
+                    <video id="baseline_comparison" width="100%" autoplay loop muted>
                         <source src="" type="video/mp4" >
                     </video>
                 </center>
