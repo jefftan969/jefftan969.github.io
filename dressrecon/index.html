@@ -94,7 +94,7 @@
                 The body shape is a neural signed distance field in the canonical space. During volume rendering, rays at time t are traced back to the canonical space via a deformation field.
 
                 <h4>Hierarchical Deformation</h4>
-                Hierarchical motion fields, represented by body and clothing Gaussians, warp between the canonical shape and time t. The motion fields capture limb motions as well as fine-grained clothing deformations. Below, the woman's arms stop moving when body deformation is removed (middle).
+                Hierarchical motion fields, represented by body and clothing Gaussians, warp between the canonical shape and time t. The motion fields capture limb motions as well as fine-grained clothing deformations. Using a two-layer model allows us to initialize body pose from off-the-shelf estimates. Below, the woman's arms stop moving when body deformation is removed (middle).
                 <br>
                 <center>
                     <video id="hierarchical_deformation" width="100%" autoplay loop muted>
