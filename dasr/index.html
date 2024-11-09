@@ -26,32 +26,19 @@
 </head>
 
 <body>
-    <div class="container" id="main">
+    <div class="container" id="main" style="max-width: 800px">
         <div class="row">
             <h2 class="col-md-12 text-center">
                 Distilling Neural Fields for Real-Time <br> Articulated Shape Reconstruction </br>
                 <small>CVPR 2023</small>
             </h2>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-2 col-md-offset-3 text-center">
-                <a href="https://jefftan969.github.io/">Jeff Tan</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <a href="https://gengshan-y.github.io/">Gengshan Yang</a>
-            </div>
-            <div class="col-md-2 text-center">
+            <center>
+                <a href="https://jefftan969.github.io/">Jeff Tan</a>,
+                <a href="https://gengshan-y.github.io/">Gengshan Yang</a>,
                 <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>
-            </div>
-        </div>
-
-        
-        <div class="row">
-            <div class="col-md-12 text-center">
+                <br>
                 Carnegie Mellon University
-            </div>
+            </center>
         </div>
 
         
@@ -88,17 +75,12 @@
 
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <h3>Abstract</h3>
                 <p class="text-justify">
 We present a method for reconstructing articulated 3D models from videos in real-time, without test-time optimization or manual 3D supervision at training time. Prior work often relies on pre-built deformable models (e.g. SMAL/SMPL), or slow per-scene optimization through differentiable rendering (e.g. dynamic NeRFs). Such methods fail to support arbitrary object categories, or are unsuitable for real-time applications. To address the challenge of collecting large-scale 3D training data for arbitrary deformable object categories, our key insight is to use off-the-shelf video-based dynamic NeRFs as 3D supervision to train a fast feed-forward network, turning 3D shape and motion prediction into a supervised distillation task. Our temporal-aware network uses articulated bones and blend skinning to represent arbitrary deformations, and is self-supervised on video datasets without requiring 3D shapes or viewpoints as input. Through distillation, our network learns to 3D-reconstruct unseen articulated objects at interactive frame rates. Our method yields higher-fidelity 3D reconstructions than prior real-time methods for animals, with the ability to render realistic images at novel viewpoints and poses.
-                  </p>
-            </div>
-        </div>
- 
+                </p>
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 <h3>Video Results on Dogs</h3>
                 <p class="text-justify">
 From left to right: (1) The input image, (2) Comparison to BANMo, (3) Comparison to BARC, (4) Our articulated shape and texture predictions, and (5-7) Our predicted geometry from three views
@@ -127,12 +109,7 @@ From left to right: (1) The input image, (2) Comparison to BANMo, (3) Comparison
                 <video id="dog_shiba-haru-1012" width="100%" autoplay loop muted>
                   <source src="img/dog_results/shiba-haru-1012.mp4" type="video/mp4" />
                 </video>
-            </div>
-        </div>
 
-            
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 <h3>Video Results on Cats</h3>
                 <p class="text-justify">
 From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articulated shape and texture predictions, and (4-6) Our predicted geometry from three views
@@ -152,12 +129,7 @@ From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articu
                 <video id="cat_pikachiu170035" width="100%" autoplay loop muted>
                   <source src="img/cat_results/pikachiu170035.mp4" type="video/mp4" />
                 </video>
-            </div>
-        </div>
-          
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 <h3>Video Results on Humans</h3>
                 <p class="text-justify">
 From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articulated shape and texture predictions, and (4-6) Our predicted geometry from three views
@@ -171,12 +143,7 @@ From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articu
                 <video id="human_D_handstand1" width="100%" autoplay loop muted>
                   <source src="img/human_results/D_handstand1.mp4" type="video/mp4" />
                 </video>
-            </div>
-        </div>
-            
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 <h3>Bibtex</h3>
                 <pre>
 @inproceedings{tan2023distilling,
@@ -188,7 +155,7 @@ From left to right: (1) The input image, (2) Comparison to BANMo, (3) Our articu
 
                 <h3>Acknowledgments</h3>
                 <p class="text-justify">
-                <a href="https://gengshan-y.github.io/">Gengshan Yang</a> is supported by the Qualcomm Innovation Fellowship. Thanks to <a href="https://andrewsonga.github.io/">Chonghyuk Song</a> for providing data; <a href="https://www.linkedin.com/in/chittesh-thavamani">Chittesh Thavamani</a> for help with appearance prediction; and <a href="https://dunbar12138.github.io/">Kangle Deng</a>, <a href="https://linzhiqiu.github.io/">Zhiqiu Lin</a>, and <a href="https://ericaweng.github.io/">Erica Weng</a> for reviews.
+                <a href="https://gengshan-y.github.io/">Gengshan Yang</a> is supported by the Qualcomm Innovation Fellowship. Thanks to <a href="https://andrewsonga.github.io/">Chonghyuk Song</a> for providing data; <a href="https://www.linkedin.com/in/chittesh-thavamani">Chittesh Thavamani</a> for help with appearance prediction; and <a href="https://dunbar12138.github.io/">Kangle Deng</a>, <a href="https://linzhiqiu.github.io/">Zhiqiu Lin</a>, and <a href="https://ericaweng.github.io/">Erica Weng</a> for reviewing early drafts.
                 The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
                 </p>
             </div>
